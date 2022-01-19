@@ -1,0 +1,27 @@
+@import "variables.css";
+
+:root {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(var(--background-gradient));
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  border: 1px solid var(--header-outline);
+  margin: 3rem 0 3rem 0;
+}
