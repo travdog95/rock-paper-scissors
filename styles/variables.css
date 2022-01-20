@@ -1,4 +1,8 @@
 :root {
+  --desktop-width: 1366px;
+  --mobile-width: 375px;
+  --border-radius: 0.5rem;
+
   --scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
   --paper-gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
   --rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);

@@ -1,4 +1,5 @@
 @import "variables.css";
+@import "modal.css";
 
 :root {
   font-family: "Barlow Semi Condensed", sans-serif;
@@ -15,13 +16,136 @@
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 body {
-  background: linear-gradient(var(--background-gradient));
-  width: 100vw;
+  background: linear-gradient(var(--background-gradient)) no-repeat;
+}
+
+.container {
+  position: relative;
+  max-width: var(--desktop-width);
   height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inner-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 header {
   border: 1px solid var(--header-outline);
-  margin: 3rem 0 3rem 0;
+  color: white;
+  font-size: 3rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+
+.title {
+  line-height: 2.25rem;
+}
+
+.score-container {
+  background-color: white;
+  border-radius: var(--border-radius);
+  color: var(--dark-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  text-align: center;
+  padding: 1rem 3rem;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+}
+
+.score {
+  font-size: 3.5rem;
+}
+
+/* Game Section */
+
+.game {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5em;
+  place-items: center;
+  padding: 4rem 0;
+  grid-template-areas: "top-left top-right" "bottom bottom";
+}
+
+.token-bottom-row {
+  grid-area: bottom;
+}
+
+.token-container {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.token-container-rock {
+  background: linear-gradient(var(--rock-gradient));
+  box-shadow: 0px 1px #999, 0px 2px #999, 0px 3px #999, 0px 4px #999, 0px 5px #999;
+}
+
+.token-container-scissors {
+  background: linear-gradient(var(--scissors-gradient));
+}
+
+.token-container-paper {
+  background: linear-gradient(var(--paper-gradient));
+}
+
+.token {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+footer {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button {
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  border: 1px solid var(--header-outline);
+  padding: 1rem 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--header-outline);
 }
