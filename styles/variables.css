@@ -9,6 +9,13 @@
   --lizard-gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
   --spock-gradient: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
 
+  /* token shadow colors */
+  --scissors-shadow: hsl(40, 84%, 43%);
+  --paper-shadow: hsl(230, 89%, 55%);
+  --rock-shadow: hsl(349, 70%, 46%);
+  --lizard-shadow: hsl(261, 72%, 53%);
+  --spock-shadow: hsl(189, 58%, 47%);
+
   /* Background */
   --background-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
 
