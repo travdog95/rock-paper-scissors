@@ -26,7 +26,6 @@ body {
 }
 
 .container {
-  position: relative;
   max-width: var(--desktop-width);
   height: 100vh;
   margin: 0 auto;
@@ -49,12 +48,13 @@ header {
   border: 1px solid var(--header-outline);
   color: white;
   font-size: 3rem;
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-radius: var(--border-radius);
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -83,7 +83,7 @@ header {
 }
 
 footer {
-  padding: 1rem 0;
+  padding: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

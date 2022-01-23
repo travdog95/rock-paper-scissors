@@ -2,11 +2,21 @@
 
 .game-start {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 5em;
   place-items: center;
-  padding: 4rem 0;
+}
+
+.game-start-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+  place-items: center;
+  padding: 1rem 0;
   grid-template-areas: "top-left top-right" "bottom bottom";
+  background-image: url("../images/bg-triangle.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20rem;
+  width: 80%;
 }
 
 .token-bottom-row {
@@ -21,22 +31,29 @@
   place-items: center;
 }
 
+.token-container:hover {
+  cursor: pointer;
+}
+
 .token-container-rock {
   background: linear-gradient(var(--rock-gradient));
   box-shadow: 0px 1px var(--rock-shadow), 0px 2px var(--rock-shadow), 0px 3px var(--rock-shadow),
-    0px 4px var(--rock-shadow), 0px 5px var(--rock-shadow);
+    0px 4px var(--rock-shadow), 0px 5px var(--rock-shadow), 0px 6px var(--rock-shadow),
+    0px 7px var(--rock-shadow);
 }
 
 .token-container-scissors {
   background: linear-gradient(var(--scissors-gradient));
   box-shadow: 0px 1px var(--scissors-shadow), 0px 2px var(--scissors-shadow),
-    0px 3px var(--scissors-shadow), 0px 4px var(--scissors-shadow), 0px 5px var(--scissors-shadow);
+    0px 3px var(--scissors-shadow), 0px 4px var(--scissors-shadow), 0px 5px var(--scissors-shadow),
+    0px 6px var(--scissors-shadow), 0px 7px var(--scissors-shadow);
 }
 
 .token-container-paper {
   background: linear-gradient(var(--paper-gradient));
   box-shadow: 0px 1px var(--paper-shadow), 0px 2px var(--paper-shadow), 0px 3px var(--paper-shadow),
-    0px 4px var(--paper-shadow), 0px 5px var(--paper-shadow);
+    0px 4px var(--paper-shadow), 0px 5px var(--paper-shadow), 0px 6px var(--paper-shadow),
+    0px 7px var(--paper-shadow);
 }
 
 .token {
@@ -46,8 +63,87 @@
   background-color: white;
   display: grid;
   place-items: center;
-  box-shadow: 0px 5px 5px lightgray inset;
+  box-shadow: 0px 0.4rem lightgray inset;
+}
+
+.game-start-container img {
+  width: 65px;
 }
 
 .game-active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.player-choice,
+.computer-choice {
+  width: 23rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.game-completed {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.game-results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.token-title {
+  color: white;
+  font-size: 1.75rem;
+  letter-spacing: 0.2rem;
+}
+
+.result {
+  color: white;
+  font-size: 3rem;
+  padding-bottom: 1.5rem;
+}
+
+.computer-token,
+.player-token {
+  height: 22rem;
+  display: grid;
+  place-items: center;
+}
+
+.computer-token-placeholder {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background-color: hsl(224, 47%, 15%);
+}
+
+.game-active-token-container {
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.game-active-token {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0px 0.4rem lightgray inset;
+}
+
+.game-active-token-container img {
+  width: 120px;
 }
