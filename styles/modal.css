@@ -40,3 +40,7 @@
 .modal-close:hover {
   cursor: pointer;
 }
+
+.modal-content img {
+  width: 70%;
+}

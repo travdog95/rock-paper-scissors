@@ -6,13 +6,16 @@ const modalCloseButton = document.querySelector(".modal-close");
 const tokenContainers = document.querySelectorAll(".token-container");
 const gameStartSection = document.querySelector("section.game-start");
 const playAgainButton = document.getElementById("playAgain");
+const playAgainButtonMobile = document.getElementById("playAgainMobile");
 const playerToken = document.querySelector(".player-token");
 const computerToken = document.querySelector(".computer-token");
 const gameCompleted = document.querySelector(".game-completed");
+const gameCompletedMobile = document.querySelector(".game-completed-mobile");
 const gameActive = {
   section: document.querySelector("section.game-active"),
   tokenContainers: document.querySelectorAll(".game-active-token-container"),
 };
+const mobileWidth = 375;
 let score = 0;
 
 const options = ["rock", "paper", "scissors"];
@@ -70,21 +73,49 @@ const goToStep = async (step, playerSelection) => {
       computerToken.classList.remove("winner");
       playerToken.classList.remove("winner");
       gameCompleted.classList.add("hidden");
+      gameCompletedMobile.classList.add("hidden");
       gameStartSection.classList.remove("hidden");
       gameActive.section.classList.add("hidden");
       break;
     case 2:
-      displayPlayerSelection(playerSelection);
+      //Hide step 1
       gameStartSection.classList.add("hidden");
       gameActive.section.classList.remove("hidden");
+
+      displayPlayerSelection(playerSelection);
+
+      const mobileTokenTitles = document.querySelectorAll(".token-title-mobile");
+      const tokenTitles = document.querySelectorAll(".token-title");
+      if (screen.width <= mobileWidth) {
+        mobileTokenTitles.forEach((title) => {
+          title.classList.remove("hidden");
+        });
+        tokenTitles.forEach((title) => {
+          title.classList.add("hidden");
+        });
+      } else {
+        mobileTokenTitles.forEach((title) => {
+          title.classList.add("hidden");
+        });
+        tokenTitles.forEach((title) => {
+          title.classList.remove("hidden");
+        });
+      }
 
       const computerSelectionIndex = await determineComputerSelection();
 
       displayComputerSelection(options[computerSelectionIndex]);
 
-      determineWinner(playerSelection, options[computerSelectionIndex]);
+      const resultText = determineWinner(playerSelection, options[computerSelectionIndex]);
 
-      gameCompleted.classList.remove("hidden");
+      document.querySelector(".result").innerHTML = resultText;
+
+      if (screen.width <= mobileWidth) {
+        gameCompletedMobile.classList.remove("hidden");
+      } else {
+        gameCompleted.classList.remove("hidden");
+      }
+
       break;
   }
 };
@@ -111,9 +142,9 @@ const determineWinner = (playerSelection, computerSelection) => {
   let resultText = "";
   //Tie
   if (playerSelection == computerSelection) {
-    resultText = "It's a tie!";
-    document.querySelector(".result").innerHTML = resultText;
-    return;
+    return "It's a tie!";
+    // document.querySelector(".result").innerHTML = resultText;
+    // return;
   }
 
   if (
@@ -130,8 +161,8 @@ const determineWinner = (playerSelection, computerSelection) => {
     updateScore(-1);
   }
 
-  document.querySelector(".result").innerHTML = resultText;
-  return;
+  // document.querySelector(".result").innerHTML = resultText;
+  return resultText;
 };
 
 const updateScore = (amount) => {
@@ -157,6 +188,10 @@ tokenContainers.forEach((token) => {
 });
 
 playAgainButton.addEventListener("click", (e) => {
+  goToStep(1);
+});
+
+playAgainButtonMobile.addEventListener("click", (e) => {
   goToStep(1);
 });
 
