@@ -114,9 +114,9 @@
 
 .computer-token,
 .player-token {
-  height: 22rem;
   display: grid;
   place-items: center;
+  height: 19rem;
 }
 
 .computer-token-placeholder {
@@ -126,7 +126,7 @@
   background-color: hsl(224, 47%, 15%);
 }
 
-.game-active-token-container {
+.game-active-token-inner-container {
   width: 19rem;
   height: 19rem;
   border-radius: 50%;
@@ -141,9 +141,19 @@
   background-color: white;
   display: grid;
   place-items: center;
-  box-shadow: 0px 0.4rem lightgray inset;
+  box-shadow: 0px 0.75rem hsl(0, 0%, 83%) inset;
 }
 
-.game-active-token-container img {
+.game-active-token-inner-container img {
   width: 120px;
+}
+
+.token-outer-container {
+  border-radius: 50%;
+  z-index: -100;
+}
+.player-token.winner .token-outer-container,
+.computer-token.winner .token-outer-container {
+  box-shadow: 0 0 0 75px hsla(0, 0%, 83%, 0.05), 0 0 0 150px hsla(0, 0%, 83%, 0.03),
+    0 0 0 225px hsla(0, 0%, 83%, 0.02);
 }
