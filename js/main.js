@@ -25,7 +25,7 @@ const optionElements = {
     <div class="token-outer-container">
       <div class="game-active-token-inner-container token-container-paper">
         <div class="game-active-token">
-          <img src="../images/icon-paper.svg" alt="Paper" />
+          <img src="./images/icon-paper.svg" alt="Paper" />
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ const optionElements = {
     <div class="token-outer-container">
       <div class="game-active-token-inner-container token-container-rock">
         <div class="game-active-token">
-          <img src="../images/icon-rock.svg" alt="Rock" />
+          <img src="./images/icon-rock.svg" alt="Rock" />
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@ const optionElements = {
   <div class="token-outer-container">
     <div class="game-active-token-inner-container token-container-scissors">
       <div class="game-active-token">
-        <img src="../images/icon-scissors.svg" alt="Scissors" />
+        <img src="./images/icon-scissors.svg" alt="Scissors" />
       </div>
     </div>
   </div>
@@ -140,11 +140,10 @@ const displayComputerSelection = (computerSelection) => {
 
 const determineWinner = (playerSelection, computerSelection) => {
   let resultText = "";
+
   //Tie
   if (playerSelection == computerSelection) {
     return "It's a tie!";
-    // document.querySelector(".result").innerHTML = resultText;
-    // return;
   }
 
   if (
@@ -161,7 +160,6 @@ const determineWinner = (playerSelection, computerSelection) => {
     updateScore(-1);
   }
 
-  // document.querySelector(".result").innerHTML = resultText;
   return resultText;
 };
 
@@ -170,6 +168,7 @@ const updateScore = (amount) => {
   document.querySelector(".score").innerHTML = score;
   localStorage.setItem("tko-rps", score);
 };
+
 /* Event Handlers */
 
 rulesButton.addEventListener("click", (e) => {
