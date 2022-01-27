@@ -90,21 +90,27 @@ const init = () => {
 const goToStep = async (step, playerSelection) => {
   switch (step) {
     case 1:
+      //Add placeholder for computer selection
       computerToken.innerHTML = `<div class="computer-token-placeholder"></div>`;
+      //Reset winner
       computerToken.classList.remove("winner");
       playerToken.classList.remove("winner");
+      //Hide game active steps
       gameCompleted.classList.add("hidden");
       gameCompletedMobile.classList.add("hidden");
-      gameStartSection.classList.remove("hidden");
       gameActive.section.classList.add("hidden");
+      //Display step 1
+      gameStartSection.classList.remove("hidden");
       break;
     case 2:
       //Hide step 1
       gameStartSection.classList.add("hidden");
       gameActive.section.classList.remove("hidden");
 
+      //Display player selection
       displayPlayerSelection(playerSelection);
 
+      //Display selection titles based screen width
       const mobileTokenTitles = document.querySelectorAll(".token-title-mobile");
       const tokenTitles = document.querySelectorAll(".token-title");
       if (screen.width <= mobileWidth) {
@@ -123,14 +129,20 @@ const goToStep = async (step, playerSelection) => {
         });
       }
 
+      //Determine computer selection
       const computerSelectionIndex = await determineComputerSelection();
 
-      displayComputerSelection(options[computerSelectionIndex]);
+      const computerSelection = isBonusGame
+        ? bonusOptions[computerSelectionIndex]
+        : options[computerSelectionIndex];
+      displayComputerSelection(computerSelection);
 
-      const resultText = determineWinner(playerSelection, options[computerSelectionIndex]);
+      //Update result text
+      const resultText = determineWinner(playerSelection, computerSelection);
 
       document.querySelector(".result").innerHTML = resultText;
 
+      //Mobile display
       if (screen.width <= mobileWidth) {
         gameCompletedMobile.classList.remove("hidden");
       } else {
@@ -149,7 +161,8 @@ const displayPlayerSelection = (playerSelection) => {
 const determineComputerSelection = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const computerSelection = Math.floor(Math.random() * options.length);
+      const potentialOptions = isBonusGame ? bonusOptions.length : options.length;
+      const computerSelection = Math.floor(Math.random() * potentialOptions);
       resolve(computerSelection);
     }, 500);
   });
