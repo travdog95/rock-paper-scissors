@@ -22,7 +22,7 @@
 }
 
 body {
-  background: linear-gradient(var(--background-gradient)) no-repeat;
+  background: radial-gradient(circle farthest-side at top, hsl(214, 47%, 23%), hsl(238, 48%, 15%));
 }
 
 .container {
