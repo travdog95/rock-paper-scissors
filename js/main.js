@@ -19,6 +19,7 @@ const mobileWidth = 375;
 let score = 0;
 
 const options = ["rock", "paper", "scissors"];
+const bonusOptions = ["rock", "paper", "scissors", "spock", "lizard"];
 
 const optionElements = {
   paper: `
@@ -44,6 +45,24 @@ const optionElements = {
     <div class="game-active-token-inner-container token-container-scissors">
       <div class="game-active-token">
         <img src="./images/icon-scissors.svg" alt="Scissors" />
+      </div>
+    </div>
+  </div>
+`,
+  spock: `    
+  <div class="token-outer-container">
+    <div class="game-active-token-inner-container token-container-spock">
+      <div class="game-active-token">
+        <img src="./images/icon-spock.svg" alt="Spock" />
+      </div>
+    </div>
+  </div>
+`,
+  lizard: `    
+  <div class="token-outer-container">
+    <div class="game-active-token-inner-container token-container-lizard">
+      <div class="game-active-token">
+        <img src="./images/icon-lizard.svg" alt="Lizard" />
       </div>
     </div>
   </div>

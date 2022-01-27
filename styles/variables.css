@@ -15,6 +15,7 @@
   --rock-shadow: hsl(349, 70%, 46%);
   --lizard-shadow: hsl(261, 72%, 53%);
   --spock-shadow: hsl(189, 58%, 47%);
+  --token-shadow-width: 0.5rem;
 
   /* Background */
   --background-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);

@@ -23,37 +23,84 @@
   grid-area: bottom;
 }
 
+.game-start-container-bonus {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    "topleft topleft topmiddle topmiddle topright topright"
+    ". bottomleft bottomleft bottomright bottomright .";
+  grid-template-rows: 20rem 13rem;
+  gap: 1rem;
+  background-image: url("../images/bg-pentagon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: 20rem; */
+  width: 90%;
+}
+
+.bonus-top-left {
+  grid-area: topleft;
+  align-self: end;
+}
+
+.bonus-top-middle {
+  grid-area: topmiddle;
+}
+
+.bonus-top-right {
+  grid-area: topright;
+  align-self: end;
+}
+
+.bonus-bottom-left {
+  grid-area: bottomleft;
+}
+
+.bonus-bottom-right {
+  grid-area: bottomright;
+}
+
 .token-container {
   width: 13rem;
   height: 13rem;
   border-radius: 50%;
   display: grid;
   place-items: center;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
 .token-container:hover {
   cursor: pointer;
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .token-container-rock {
   background: linear-gradient(var(--rock-gradient));
-  box-shadow: 0px 1px var(--rock-shadow), 0px 2px var(--rock-shadow), 0px 3px var(--rock-shadow),
-    0px 4px var(--rock-shadow), 0px 5px var(--rock-shadow), 0px 6px var(--rock-shadow),
-    0px 7px var(--rock-shadow);
-}
-
-.token-container-scissors {
-  background: linear-gradient(var(--scissors-gradient));
-  box-shadow: 0px 1px var(--scissors-shadow), 0px 2px var(--scissors-shadow),
-    0px 3px var(--scissors-shadow), 0px 4px var(--scissors-shadow), 0px 5px var(--scissors-shadow),
-    0px 6px var(--scissors-shadow), 0px 7px var(--scissors-shadow);
+  box-shadow: 0px var(--token-shadow-width) var(--rock-shadow);
 }
 
 .token-container-paper {
   background: linear-gradient(var(--paper-gradient));
-  box-shadow: 0px 1px var(--paper-shadow), 0px 2px var(--paper-shadow), 0px 3px var(--paper-shadow),
-    0px 4px var(--paper-shadow), 0px 5px var(--paper-shadow), 0px 6px var(--paper-shadow),
-    0px 7px var(--paper-shadow);
+  box-shadow: 0px var(--token-shadow-width) var(--paper-shadow);
+}
+
+.token-container-scissors {
+  background: linear-gradient(var(--scissors-gradient));
+  box-shadow: 0px var(--token-shadow-width) var(--scissors-shadow);
+}
+
+.token-container-spock {
+  background: linear-gradient(var(--spock-gradient));
+  box-shadow: 0px var(--token-shadow-width) var(--spock-shadow);
+}
+
+.token-container-lizard {
+  background: linear-gradient(var(--lizard-gradient));
+  box-shadow: 0px var(--token-shadow-width) var(--lizard-shadow);
 }
 
 .token {
@@ -63,7 +110,7 @@
   background-color: white;
   display: grid;
   place-items: center;
-  box-shadow: 0px 0.4rem lightgray inset;
+  box-shadow: 0px var(--token-shadow-width) lightgray inset;
 }
 
 .game-start-container img {
@@ -142,11 +189,11 @@
   background-color: white;
   display: grid;
   place-items: center;
-  box-shadow: 0px 0.75rem hsl(0, 0%, 83%) inset;
+  box-shadow: 0px var(--token-shadow-width) hsl(0, 0%, 83%) inset;
 }
 
 .game-active-token-inner-container img {
-  width: 120px;
+  width: 100px;
 }
 
 .token-outer-container {
