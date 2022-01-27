@@ -28,7 +28,7 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
     "topleft topleft topmiddle topmiddle topright topright"
-    ". bottomleft bottomleft bottomright bottomright .";
+    "bottomleft bottomleft bottomleft bottomright bottomright bottomright";
   grid-template-rows: 20rem 13rem;
   gap: 1rem;
   background-image: url("../images/bg-pentagon.svg");
@@ -54,10 +54,13 @@
 
 .bonus-bottom-left {
   grid-area: bottomleft;
+  justify-self: end;
+  padding-right: 0.5rem;
 }
 
 .bonus-bottom-right {
   grid-area: bottomright;
+  padding-left: 0.5rem;
 }
 
 .token-container {

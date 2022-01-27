@@ -23,21 +23,29 @@
             <img src="./images/icon-close.svg" alt="Close" width="20" height="20" />
           </div>
         </div>
-        <div class="modal-content"><img src="./images/image-rules.svg" alt="Rules" /></div>
+        <div class="modal-content original"><img src="./images/image-rules.svg" alt="Rules" /></div>
+        <div class="modal-content bonus hidden">
+          <img src="./images/image-rules-bonus.svg" alt="Rules" />
+        </div>
       </div>
     </div>
 
     <div class="container">
       <div class="inner-container">
+        <div class="switch-game-container">
+          <button class="btn btn-primary switch-game">Switch Game</button>
+        </div>
+
         <header>
-          <div class="title">Rock<br />Paper<br />Scissors</div>
+          <div class="title original">Rock<br />Paper<br />Scissors</div>
+          <div class="bonus title hidden">Rock<br />Paper<br />Scissors<br />Spock<br />Lizard</div>
           <div class="score-container">
             <div class="score-label">Score</div>
             <div class="score">0</div>
           </div>
         </header>
         <section class="game-start">
-          <div class="game-start-container">
+          <div class="game-start-container original">
             <div data-token="paper" class="token-container token-container-paper">
               <div class="token">
                 <img src="./images/icon-paper.svg" alt="Paper" />
@@ -55,7 +63,7 @@
             </div>
           </div>
 
-          <div class="game-start-container-bonus hidden">
+          <div class="game-start-container-bonus hidden bonus">
             <div class="bonus-top-left">
               <div data-token="paper" class="token-container token-container-paper">
                 <div class="token">
@@ -77,7 +85,6 @@
                 </div>
               </div>
             </div>
-            <div class="empty"></div>
             <div class="bonus-bottom-left">
               <div data-token="spock" class="token-container token-container-spock">
                 <div class="token">

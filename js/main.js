@@ -21,6 +21,8 @@ let score = 0;
 const options = ["rock", "paper", "scissors"];
 const bonusOptions = ["rock", "paper", "scissors", "spock", "lizard"];
 
+let isBonusGame = false;
+
 const optionElements = {
   paper: `
     <div class="token-outer-container">
@@ -165,18 +167,41 @@ const determineWinner = (playerSelection, computerSelection) => {
     return "It's a tie!";
   }
 
-  if (
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
-  ) {
-    resultText = "You win!";
-    playerToken.classList.add("winner");
-    updateScore(1);
+  if (isBonusGame) {
+    if (
+      (playerSelection == "scissors" && computerSelection == "paper") ||
+      (playerSelection == "scissors" && computerSelection == "lizard") ||
+      (playerSelection == "paper" && computerSelection == "rock") ||
+      (playerSelection == "paper" && computerSelection == "spock") ||
+      (playerSelection == "rock" && computerSelection == "lizard") ||
+      (playerSelection == "rock" && computerSelection == "scissors") ||
+      (playerSelection == "lizard" && computerSelection == "spock") ||
+      (playerSelection == "lizard" && computerSelection == "paper") ||
+      (playerSelection == "spock" && computerSelection == "scissors") ||
+      (playerSelection == "spock" && computerSelection == "rock")
+    ) {
+      resultText = "You win!";
+      playerToken.classList.add("winner");
+      updateScore(1);
+    } else {
+      resultText = "You lose!";
+      computerToken.classList.add("winner");
+      updateScore(-1);
+    }
   } else {
-    resultText = "You lose!";
-    computerToken.classList.add("winner");
-    updateScore(-1);
+    if (
+      (playerSelection == "rock" && computerSelection == "scissors") ||
+      (playerSelection == "paper" && computerSelection == "rock") ||
+      (playerSelection == "scissors" && computerSelection == "paper")
+    ) {
+      resultText = "You win!";
+      playerToken.classList.add("winner");
+      updateScore(1);
+    } else {
+      resultText = "You lose!";
+      computerToken.classList.add("winner");
+      updateScore(-1);
+    }
   }
 
   return resultText;
@@ -186,6 +211,29 @@ const updateScore = (amount) => {
   score = score + amount;
   document.querySelector(".score").innerHTML = score;
   localStorage.setItem("tko-rps", score);
+};
+
+const switchGame = () => {
+  const bonusElements = document.querySelectorAll(".bonus");
+  const originalElements = document.querySelectorAll(".original");
+
+  if (isBonusGame) {
+    bonusElements.forEach((bonus) => {
+      bonus.classList.remove("hidden");
+    });
+
+    originalElements.forEach((og) => {
+      og.classList.add("hidden");
+    });
+  } else {
+    bonusElements.forEach((bonus) => {
+      bonus.classList.add("hidden");
+    });
+
+    originalElements.forEach((og) => {
+      og.classList.remove("hidden");
+    });
+  }
 };
 
 /* Event Handlers */
@@ -211,6 +259,11 @@ playAgainButton.addEventListener("click", (e) => {
 
 playAgainButtonMobile.addEventListener("click", (e) => {
   goToStep(1);
+});
+
+document.querySelector(".switch-game").addEventListener("click", (e) => {
+  isBonusGame = !isBonusGame;
+  switchGame();
 });
 
 init();
